@@ -1,0 +1,426 @@
+@charset "UTF-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); 
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    html {
+        scroll-behavior: smooth;
+    }
+    
+    body{
+        background-color: oklch(15.3% 0.006 107.1);
+        font-family: "Poppins", sans-serif;
+    }
+
+    h2{
+        color: #bb5d2a;
+        font-size: 40px ;
+        
+        
+    }
+    h3{
+        color: #bb5d2a;
+        font-size: 30px ;
+        
+    }
+    p{
+        font-size: 20px;     
+    }
+
+    @keyframes revealOnScroll {
+        from {
+            opacity: 0;
+            transform: translateY(60px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInOut {
+    /* 1. Início: Invisível na parte de baixo da tela */
+    0% {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    
+    /* 2. Entrada: Fica totalmente visível quando entra na tela */
+    20% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* 3. Permanência: Continua visível enquanto passa pelo meio da tela */
+    80% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    /* 4. Saída: Vai sumindo (fade out) conforme sobe para sair por cima */
+    100% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+
+}
+
+
+
+  
+    nav{
+        width: 100%;
+        text-align: center;
+        background: oklch(15.3% 0.006 107.1);
+
+        
+    }
+
+    nav a{
+        background-color: oklch(15.3% 0.006 107.1);
+        border-radius: 5px;
+        color: #bb5d2a;
+        text-decoration: none;
+        margin-right: 10px;
+        padding: 1px;        
+    }
+
+    .reveal {
+    animation: fadeInOut linear forwards;
+    animation-timeline: view();
+    animation-range: cover;
+    } 
+     .color-default{
+        color:oklch(88% 0.011 106.6);
+    }
+
+    .borda{
+        border: 1px solid red;
+    }
+
+    .center{
+        text-align: center;
+    }
+
+    /* .logo{
+        width: 100px;
+        height: auto; 
+    } 
+    
+    .logo-titulo {
+        width: fit-content;
+        font-family: "Cinzel", serif;
+
+    } */
+
+    .sub-logo{
+        display: grid;
+        font-family: 'Caveat', 'Segoe Script', cursive;
+        /* border: 2px solid rebeccapurple; */
+    }
+
+    .container-nav{
+        background-color: oklch(46.634% 0.02488 107.368 / 0.082);
+        display: flex;
+        flex-direction: column;
+        columns: 0ch;
+        align-items: center; 
+        padding: 20px 10px;
+        gap: 10px;
+    
+    }    
+    .container-nav h1{
+            font-weight: 1;
+            color: #bb5d2a;
+            font-family: "Cinzel", serif;
+            font-size: clamp(32px, 5vw, 64px);
+            white-space: nowrap;
+            margin: 0;
+        
+    }
+
+    .container-nav h2{
+        text-align: center;
+        font-family: "Lucida Handwriting", "Brush Script MT", "Apple Chancery", cursive;
+         font-size: 30px; 
+    }
+
+    .container-main{
+        display: grid;
+        justify-content: center;
+        padding: 40px 20px;
+        max-width: 900px;
+        margin: 0 auto;
+    
+         
+    }
+
+    .container-main {
+        p{
+            text-align: justify;
+        }
+    }
+
+    
+
+
+    .container-main-flex{
+        display: flex;
+        padding: 70px 20px;
+        gap: 10px;
+        max-width: 1200px;
+        margin: 0 auto;
+        margin-top: 10px;
+    }
+      
+    .bio-img {
+        width: 30%;
+        height: 350px; 
+        object-fit: cover; 
+        border-radius: 8px; 
+    }
+  
+    /* .bio-content-info{
+        flex: 1;
+        border-radius: 10px;
+        background-color: oklch(46.634% 0.02488 107.368 / 0.082); 
+    } */
+
+/* Títulos das categorias (Entradas, Pratos, etc) */
+
+    .cardapio-section{
+        text-align: left;
+        /* font-family: 'Caveat', 'Segoe Script', cursive; */
+        padding: 10px auto;
+
+    }
+
+    .cardapio-section h3{
+        font-size: 30px;
+        
+    }
+    .categoria-titulo {
+        
+        color: #bb5d2a;
+        font-size: 36px;
+        margin: 40px 0 20px 0;
+        text-align: center;
+    }
+
+    .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap:20px; /* Espaço entre os cards */
+    }
+
+    /* Card individual do prato */
+    .prato-card {
+        padding: 20px;
+        border-radius: 10px;
+        background-color: oklch(46.634% 0.02488 107.368 / 0.082);
+        display: flex;
+        flex-direction: column;
+        justify-content: baseline;
+        transition: transform 0.3s ease;
+    }
+
+    .prato-card:hover {
+            transform: translateY(-3px);
+        }
+
+    /* Estilo do título do prato */
+    .prato-card h3 {
+        color: #bb5d2a;
+        font-size: 30px;
+        margin-bottom: 8px;
+    }
+
+    /* Estilo do texto de descrição */
+    .prato-card p {
+        font-size: 25px;
+        line-height: 1.4;
+        overflow-wrap: break-word; /* Previne que palavras longas vazem a caixa */
+        font-family: "Poppins", sans-serif;
+    }
+
+    footer {
+        background-color: oklch(12% 0.006 107.1);
+        padding: 50px 20px 20px 20px;
+        margin-top: 60px;
+        border-top: 1px solid oklch(30% 0.01 107.1);
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 40px;
+        align-items: start;
+    }
+
+    .footer-info h3 {
+        color: #bb5d2a;
+        font-size: 22px;
+        margin-bottom: 12px;
+        border-bottom: 2px solid #bb5d2a;
+        display: inline-block;
+        padding-bottom: 4px;
+    }
+
+    .footer-info p {
+
+        font-size: 16px;
+        line-height: 1.6;
+        color: oklch(88% 0.011 106.6);
+    }
+
+    .footer-map iframe {
+        width: 100%;
+        height: 250px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .footer-copy {
+        text-align: center;
+        margin-top: 40px;
+        padding-top: 20px;
+        border-top: 1px solid oklch(20% 0.006 107.1);
+        font-size: 14px;
+        color: oklch(65% 0.011 106.6);
+    }
+
+    .cuia{
+        display: flex;
+        justify-content: center;
+        height: 400px;
+        
+    }
+
+    .btn-zap{
+
+            display: inline-flex;
+            width: 100%;
+            position: relative;
+            right: 10px;
+    }
+
+    .whatsapp-btn {
+        display: inline-flex;
+
+        background-color:#128c2c; /* Verde do WhatsApp */
+        color: #ffffff;            /* Cor do texto */
+        font-family: Arial, sans-serif;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 12px 24px;
+        border-radius: 50px;       /* Deixa o botão arredondado */
+        text-decoration: none;     /* Remove o sublinhado do link */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    }
+    .whatsapp-btn:hover {
+        background-color: #25d365af; /* Verde ligeiramente mais escuro */
+        transform: translateY(-2px); /* Eleva o botão suavemente */
+        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+    }
+    .whatsapp-btn:active {
+        transform: translateY(0);
+    }
+
+@media (max-width: 768px) {
+    .btn-zap{
+        justify-content: center;
+        position: relative;
+        left: 10px;
+    }
+    .cuia{
+        height: 150px;
+    }
+
+    .logo {
+        width: 20px; /* Ajusta o tamanho da logo para telas menores */
+    }
+
+    .container-nav h1 {
+        /* Permite que o texto quebre linha se o celular for muito pequeno */
+        white-space: normal; 
+        text-align: center;
+        
+        /* Ajuste fino do clamp para garantir que não ultrapasse a tela */
+        font-size: 40px; 
+
+    }
+
+    .container-nav h3{
+         
+        text-align: center;
+        
+        /* Ajuste fino do clamp para garantir que não ultrapasse a tela */
+        font-size: 22px; 
+    }
+
+    .container-main{
+        h2{
+            text-align: left;
+            font-size: 30px;
+        }
+        p{
+            
+
+            text-align: left;
+
+        }
+    }
+    .container-main-flex {
+        flex-direction: column;
+        h2{
+            text-align: left;
+            font-size: 30px;
+            white-space: nowrap; 
+        }
+        p{
+            font-size: 25px;   
+            text-align: left;
+            
+        }
+    }
+
+
+    .bio-img {
+        width: 100%;
+        height: 250px;
+    }
+
+
+    
+
+    .categoria-titulo {
+        font-size: 28px;
+    }
+
+    .bio-img:nth-child(2) {
+        display: none;
+    }
+
+
+    .footer-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .footer-info h3 {
+        border-bottom: none;
+    }
+
+    
+    }
