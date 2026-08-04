@@ -16,7 +16,9 @@
     }
     
     body{
-        background-color: oklch(15.3% 0.006 107.1);
+        /* background-color: #0a0a09;; */
+        background: linear-gradient(90deg,rgba(12, 12, 9, 1) 0%, rgba(12, 12, 10, 1) 50%, rgba(12, 12, 11, 1) 100%);
+        /* background-color: #0c0c09; */
         font-family: "Poppins", sans-serif;
     }
 
@@ -47,57 +49,56 @@
     }
 
     @keyframes fadeInOut {
-    /* 1. Início: Invisível na parte de baixo da tela */
-    0% {
-        opacity: 0;
-        transform: translateY(50px);
-    }
     
-    /* 2. Entrada: Fica totalmente visível quando entra na tela */
-    20% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+   0%{
+    opacity:0;
+    transform:translateY(30px) scale(.95);
+}
 
-    /* 3. Permanência: Continua visível enquanto passa pelo meio da tela */
-    80% {
-        opacity: 1;
-        transform: translateY(0);
-    }
+20%{
+    opacity:1;
+    transform:translateY(0) scale(1);
+}
 
-    /* 4. Saída: Vai sumindo (fade out) conforme sobe para sair por cima */
-    100% {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
+80%{
+    opacity:1;
+    transform:translateY(0) scale(1);
+}
+
+100%{
+    opacity:0;
+    transform:translateY(-10px) scale(.98);
+}
 
 }
+
+  .reveal {
+    animation:  fadeInOut linear forwards;
+    animation-timeline: view();
+    animation-range: cover;
+    } 
 
 
 
   
     nav{
+        
+        
         width: 100%;
+        
         text-align: center;
         background: oklch(15.3% 0.006 107.1);
-
+        margin-top: 1em;
         
     }
 
     nav a{
-        background-color: oklch(15.3% 0.006 107.1);
-        border-radius: 5px;
         color: #bb5d2a;
         text-decoration: none;
         margin-right: 10px;
-        padding: 1px;        
+        overflow: hidden;
     }
 
-    .reveal {
-    animation: fadeInOut linear forwards;
-    animation-timeline: view();
-    animation-range: cover;
-    } 
      .color-default{
         color:oklch(88% 0.011 106.6);
     }
@@ -110,30 +111,20 @@
         text-align: center;
     }
 
-    /* .logo{
-        width: 100px;
-        height: auto; 
-    } 
-    
-    .logo-titulo {
-        width: fit-content;
-        font-family: "Cinzel", serif;
-
-    } */
 
     .sub-logo{
         display: grid;
         font-family: 'Caveat', 'Segoe Script', cursive;
-        /* border: 2px solid rebeccapurple; */
     }
 
+    /* container da logo e nav */
     .container-nav{
         background-color: oklch(46.634% 0.02488 107.368 / 0.082);
         display: flex;
         flex-direction: column;
         columns: 0ch;
         align-items: center; 
-        padding: 20px 10px;
+        padding: 30px 0 0 ;
         gap: 10px;
     
     }    
@@ -152,16 +143,14 @@
         font-family: "Lucida Handwriting", "Brush Script MT", "Apple Chancery", cursive;
          font-size: 30px; 
     }
-
+    /* container do quem somos */
     .container-main{
-        display: grid;
-        justify-content: center;
         padding: 40px 20px;
-        max-width: 900px;
+        max-width: 800px;
         margin: 0 auto;
-    
-         
+
     }
+
 
     .container-main {
         p{
@@ -169,9 +158,7 @@
         }
     }
 
-    
-
-
+    /* div do chef conde */
     .container-main-flex{
         display: flex;
         padding: 70px 20px;
@@ -188,14 +175,8 @@
         border-radius: 8px; 
     }
   
-    /* .bio-content-info{
-        flex: 1;
-        border-radius: 10px;
-        background-color: oklch(46.634% 0.02488 107.368 / 0.082); 
-    } */
 
 /* Títulos das categorias (Entradas, Pratos, etc) */
-
     .cardapio-section{
         text-align: left;
         /* font-family: 'Caveat', 'Segoe Script', cursive; */
@@ -213,6 +194,7 @@
         font-size: 36px;
         margin: 40px 0 20px 0;
         text-align: center;
+        /* font-family: 'Caveat', 'Segoe Script', cursive; */
     }
 
     .menu-grid {
@@ -239,16 +221,42 @@
     /* Estilo do título do prato */
     .prato-card h3 {
         color: #bb5d2a;
-        font-size: 30px;
-        margin-bottom: 8px;
+        font-size: 20px;
+        margin-bottom: 5px;
     }
 
     /* Estilo do texto de descrição */
     .prato-card p {
-        font-size: 25px;
-        line-height: 1.4;
+        font-size: 20px;
+        line-height: 1;
         overflow-wrap: break-word; /* Previne que palavras longas vazem a caixa */
-        font-family: "Poppins", sans-serif;
+        text-align: left;
+    }
+
+    .drink-card{
+        width: 500px;
+        padding: 5px;
+        border-radius: 10px;
+        background-color: oklch(46.634% 0.02488 107.368 / 0.082);
+        justify-self: center;
+    }
+
+    .drink-card h3 {
+        color: #bb5d2a;
+        font-size: 20px;
+        margin-bottom: 5px;
+    }
+
+    /* Estilo do texto de descrição */
+    .drink-card p {
+        font-size: 20px;
+        line-height: 1;
+        overflow-wrap: break-word; /* Previne que palavras longas vazem a caixa */
+        text-align: left;
+    }
+
+    .drink-card p, h3{
+        text-align: center;
     }
 
     footer {
@@ -398,11 +406,8 @@
 
     .bio-img {
         width: 100%;
-        height: 250px;
+        height: 300px;
     }
-
-
-    
 
     .categoria-titulo {
         font-size: 28px;
@@ -410,6 +415,13 @@
 
     .bio-img:nth-child(2) {
         display: none;
+    }
+
+    .drink-card{
+        margin: 0;
+        padding: 5px;
+        width: 80%;
+        height: 100%;
     }
 
 
