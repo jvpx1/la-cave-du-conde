@@ -2,25 +2,25 @@
 // Chave = nome exato do prato como aparece no cardápio.
 export const precos = {
   // Entradas
-  "Salada Wirá-mirí": 0,
-  "Carpaccio de Cubiu": 0,
-  "Queijo Coalho com aioli de umarí": 0,
-  "Vatapá de palmito e castanha": 0,
+  "Salada Wirá-mirí": 45,
+  "Carpaccio de Cubiu": 38,
+  "Queijo Coalho com aioli de umarí": 40,
+  "Vatapá de palmito e castanha": 42,
 
   // Pratos Principais
-  "Pexe com Banana e Maracujá": 0,
-  "Peixe Grelhado": 0,
-  "Moqueca Kabary": 0,
-  "Peixe com jambu e tapioca": 0,
-  "Ralo Baniwa": 0,
-  "Bubury": 0,
-  "Medalhão com redução em açaí": 0,
-  "Medalhão com purê de tucumã": 0,
-  "Medalhão com purê de macaxeira": 0,
+  "Pexe com Banana e Maracujá": 147,
+  "Peixe Grelhado": 145,
+  "Moqueca Kabary": 146,
+  "Peixe com jambu e tapioca": 70,
+  "Ralo Baniwa": 70,
+  "Bubury": 70,
+  "Medalhão com redução em açaí": 75,
+  "Medalhão com purê de tucumã": 72,
+  "Medalhão com purê de macaxeira": 75,
 
   // Sobremesas
-  "Banana Caramelizada": 0,
-  "Sorvete com geleia de cubiu": 0,
+  "Banana Caramelizada": 28,
+  "Sorvete com geleia de cubiu": 28,
 
   // Drinks
   "Manhã": 0,

@@ -60,7 +60,8 @@ export const cardapio = [
       { nome: "Tônica", descricao: "" },
       { nome: "Água", descricao: "Com e sem gás" },
       { nome: "Refrigerantes", descricao: "" },
-      { nome: "Suco de frutas regionais", descricao: "" },
+      { nome: "Suco de frutas regionais", descricao: "Consultar o garçom" },
+      { nome: "Vinhos", descricao: "Solicite ao garçom a carta de vinhos da casa" }
     ],
   },
 ];
@@ -105,7 +106,7 @@ function criarCardClicavel(item) {
     <span class="prato-add" aria-hidden="true">+</span>
     <h3>${item.nome}${item.semAlcool ? " <i>- sem álcool</i>" : ""}</h3>
     <p class="color-default">${item.descricao}</p>
-    ${precoTexto ? `<span class="prato-preco">${precoTexto}</span>` : ""}
+    
   `;
 
   /*
@@ -114,7 +115,7 @@ function criarCardClicavel(item) {
    *
    * Para ativar:
    *   1. Preencha os valores reais em js/precos.js (hoje todos estão em 0).
-   *   2. Troque a linha:
+   *   2. Substitua a linha:
    *        ${precoTexto ? `<span class="prato-preco">${precoTexto}</span>` : ""}
    *      por:
    *        <span class="prato-preco">${precoTexto}</span>

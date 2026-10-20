@@ -247,6 +247,8 @@ nav a:focus-visible {
   pointer-events: none; /* o clique é do card inteiro */
 }
 
+
+
 @keyframes flutuarAdd {
   0%, 100% {
     transform: translateY(0);
@@ -302,7 +304,7 @@ footer {
   font-size: 22px;
   margin-bottom: 12px;
   border-bottom: 2px solid #bb5d2a;
-  display: inline-block;
+  display: block;
   padding-bottom: 4px;
 }
 
@@ -325,6 +327,10 @@ footer {
   padding-top: 20px;
   border-top: 1px solid oklch(20% 0.006 107.1);
   font-size: 14px;
+  color: oklch(65% 0.011 106.6);
+}
+& a{
+  text-decoration: none;
   color: oklch(65% 0.011 106.6);
 }
 
