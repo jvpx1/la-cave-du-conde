@@ -1,437 +1,766 @@
 @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap'); 
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
-
 @import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
-    *{
-        padding: 0;
-        margin: 0;
-    }
-    html {
-        scroll-behavior: smooth;
-        
-    }
-    
-    body{
-        background-color: #0c0c09;
-        font-family: "Poppins", sans-serif;
-    }
 
-    h2{
-        color: #bb5d2a;
-        font-size: 40px ;
-        
-        
-    }
-    h3{
-        color: #bb5d2a;
-        font-size: 30px ;
-        
-    }
-    p{
-        font-size: 20px;     
-    }
-
-    @keyframes revealOnScroll {
-        from {
-            opacity: 0;
-            transform: translateY(60px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes fadeInOut {
-    
-   0%{
-    opacity:0;
-    transform:translateY(30px) scale(.95);
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-20%{
-    opacity:1;
-    transform:translateY(0) scale(1);
+html {
+  scroll-behavior: smooth;
 }
 
-80%{
-    opacity:1;
-    transform:translateY(0) scale(1);
+body {
+  background-color: #0c0c09;
+  font-family: "Poppins", sans-serif;
 }
 
-100%{
-    opacity:0;
-    transform:translateY(-10px) scale(.98);
+h2 {
+  color: #bb5d2a;
+  font-size: 40px;
 }
 
+h3 {
+  color: #bb5d2a;
+  font-size: 30px;
 }
 
-  .reveal {
-    animation:  fadeInOut linear forwards;
-    animation-timeline: view();
-    animation-range: cover;
-    } 
+p {
+  font-size: 20px;
+}
 
+/* ---------- Animações ---------- */
+@keyframes revealOnScroll {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
+/* reveal que NÃO some no final do scroll */
+.reveal {
+  animation: revealOnScroll linear both;
+  animation-timeline: view();
+  animation-range: entry 0% cover 30%;
+}
 
-  
-    nav{
-        
-        
-        width: 100%;
-        
-        text-align: center;
-        background: oklch(15.3% 0.006 107.1);
-        margin-top: 1em;
-        
-    }
+/* ---------- Nav ---------- */
+nav {
+  width: 100%;
+  text-align: center;
+  background: oklch(15.3% 0.006 107.1);
+  margin-top: 1em;
+}
 
-    nav a{
-        color: #bb5d2a;
-        text-decoration: none;
-        margin-right: 10px;
-        overflow: hidden;
-    }
+nav a {
+  color: #bb5d2a;
+  text-decoration: none;
+  margin-right: 10px;
+  overflow: hidden;
+}
 
-     .color-default{
-        color:oklch(88% 0.011 106.6);
-    }
+nav a:hover,
+nav a:focus-visible {
+  text-decoration: underline;
+}
 
-    .borda{
-        border: 1px solid red;
-    }
+.color-default {
+  color: oklch(88% 0.011 106.6);
+}
 
-    .center{
-        text-align: center;
-    }
+.center {
+  text-align: center;
+}
 
+.sub-logo {
+  display: grid;
+  font-family: 'Caveat', 'Segoe Script', cursive;
+}
 
-    .sub-logo{
-        display: grid;
-        font-family: 'Caveat', 'Segoe Script', cursive;
-    }
+/* ---------- Header ---------- */
+.container-nav {
+  background-color: oklch(46.634% 0.02488 107.368 / 0.082);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0 0;
+  gap: 10px;
+}
 
-    /* container da logo e nav */
-    .container-nav{
-        background-color: oklch(46.634% 0.02488 107.368 / 0.082);
-        display: flex;
-        flex-direction: column;
-        columns: 0ch;
-        align-items: center; 
-        padding: 30px 0 0 ;
-        gap: 10px;
-    
-    }    
-    .container-nav h1{
-            font-weight: 1;
-            color: #bb5d2a;
-            font-family: "Cinzel", serif;
-            font-size: clamp(32px, 5vw, 64px);
-            white-space: nowrap;
-            margin: 0;
-        
-    }
+.container-nav h1 {
+  font-weight: 100;
+  color: #bb5d2a;
+  font-family: "Cinzel", serif;
+  font-size: clamp(32px, 5vw, 64px);
+  white-space: nowrap;
+  margin: 0;
+}
 
-    .container-nav h2{
-        text-align: center;
-        font-family: "Lucida Handwriting", "Brush Script MT", "Apple Chancery", cursive;
-         font-size: 30px; 
-    }
-    /* container do quem somos */
-    .container-main{
-        padding: 40px 20px;
-        max-width: 800px;
-        margin: 0 auto;
+.container-nav h2 {
+  text-align: center;
+  font-family: "Lucida Handwriting", "Brush Script MT", "Apple Chancery", cursive;
+  font-size: 30px;
+}
 
-    }
+/* ---------- Quem somos ---------- */
+.container-main {
+  padding: 40px 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
 
+.container-main p {
+  text-align: justify;
+}
 
-    .container-main {
-        p{
-            text-align: justify;
-        }
-    }
+/* ---------- Chef ---------- */
+.container-main-flex {
+  display: flex;
+  padding: 70px 20px;
+  gap: 10px;
+  max-width: 1200px;
+  margin: 10px auto 0;
+}
 
-    /* div do chef conde */
-    .container-main-flex{
-        display: flex;
-        padding: 70px 20px;
-        gap: 10px;
-        max-width: 1200px;
-        margin: 0 auto;
-        margin-top: 10px;
-    }
-      
-    .bio-img {
-        width: 30%;
-        height: 350px; 
-        object-fit: cover; 
-        border-radius: 8px; 
-    }
-  
+.bio-img {
+  width: 30%;
+  height: 350px;
+  object-fit: cover;
+  border-radius: 8px;
+}
 
-/* Títulos das categorias (Entradas, Pratos, etc) */
-    .cardapio-section{
-        text-align: left;
-        /* font-family: 'Caveat', 'Segoe Script', cursive; */
-        padding: 10px auto;
+/* ---------- Aviso discreto abaixo da bio do Chef ---------- */
+.aviso-comanda {
+  max-width: 800px;
+  margin: 0 auto 20px;
+  padding: 0 20px;
+  text-align: center;
+  font-size: 15px;
+  font-style: italic;
+  color: oklch(70% 0.011 106.6);
+  line-height: 1.6;
+}
 
-    }
+.aviso-comanda .aviso-destaque {
+  color: #bb5d2a;
+  font-style: normal;
+  font-weight: 600;
+}
 
-    .cardapio-section h3{
-        font-size: 30px;
-        
-    }
-    .categoria-titulo {
-        
-        color: #bb5d2a;
-        font-size: 36px;
-        margin: 40px 0 20px 0;
-        text-align: center;
-        /* font-family: 'Caveat', 'Segoe Script', cursive; */
-    }
+/* ---------- Cardápio ---------- */
+.cardapio-section {
+  text-align: left;
+  padding: 10px auto;
+}
 
-    .menu-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap:20px; /* Espaço entre os cards */
-    }
+.categoria-titulo {
+  color: #bb5d2a;
+  font-size: 36px;
+  margin: 40px 0 20px 0;
+  text-align: center;
+}
 
-    /* Card individual do prato */
-    .prato-card {
-        padding: 20px;
-        border-radius: 10px;
-        background-color: oklch(46.634% 0.02488 107.368 / 0.082);
-        display: flex;
-        flex-direction: column;
-        justify-content: baseline;
-        transition: transform 0.3s ease;
-    }
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
 
-    .prato-card:hover {
-            transform: translateY(-3px);
-        }
+/* ---------- Card do prato (base) ---------- */
+.prato-card {
+  position: relative;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: oklch(46.634% 0.02488 107.368 / 0.082);
+  display: flex;
+  flex-direction: column;
+  justify-content: baseline;
+  border: 1px solid transparent;
+  color: inherit;
+  font: inherit;
+  text-align: left;
+}
 
-    /* Estilo do título do prato */
-    .prato-card h3 {
-        color: #bb5d2a;
-        font-size: 20px;
-        margin-bottom: 5px;
-    }
+.prato-card h3 {
+  color: #bb5d2a;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
 
-    /* Estilo do texto de descrição */
-    .prato-card p {
-        font-size: 20px;
-        line-height: 1;
-        overflow-wrap: break-word; /* Previne que palavras longas vazem a caixa */
-        text-align: left;
-    }
+.prato-card p {
+  font-size: 20px;
+  line-height: 1;
+  overflow-wrap: break-word;
+  text-align: left;
+}
 
-    .drink-card{
-        width: 500px;
-        padding: 5px;
-        border-radius: 10px;
-        background-color: oklch(46.634% 0.02488 107.368 / 0.082);
-        justify-self: center;
-    }
+/* ---------- Card NÃO clicável (Drinks / Variedades) ---------- */
+.prato-card-informativo {
+  cursor: default;
+  opacity: 0.85;
+}
 
-    .drink-card h3 {
-        color: #bb5d2a;
-        font-size: 20px;
-        margin-bottom: 5px;
-    }
+/* ---------- Card clicável (Entradas / Principais / Sobremesas) ---------- */
+.prato-card-clicavel {
+  cursor: pointer;
+  padding-right: 56px; /* abre espaço pro "+" flutuante */
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
 
-    /* Estilo do texto de descrição */
-    .drink-card p {
-        font-size: 20px;
-        line-height: 1;
-        overflow-wrap: break-word; /* Previne que palavras longas vazem a caixa */
-        text-align: left;
-    }
+.prato-card-clicavel:hover,
+.prato-card-clicavel:focus-visible {
+  transform: translateY(-3px);
+  background-color: oklch(46.634% 0.02488 107.368 / 0.16);
+  border-color: #bb5d2a;
+  outline: none;
+}
 
-    .drink-card p, h3{
-        text-align: center;
-    }
+/* "+" sempre visível e flutuando */
+.prato-add {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #bb5d2a;
+  color: #0c0c09;
+  display: grid;
+  place-items: center;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1;
+  box-shadow: 0 4px 12px rgba(187, 93, 42, 0.45);
+  animation: flutuarAdd 2.2s ease-in-out infinite;
+  pointer-events: none; /* o clique é do card inteiro */
+}
 
-    footer {
-        background-color: oklch(12% 0.006 107.1);
-        padding: 50px 20px 20px 20px;
-        margin-top: 60px;
-        border-top: 1px solid oklch(30% 0.01 107.1);
-    }
+@keyframes flutuarAdd {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 4px 12px rgba(187, 93, 42, 0.45);
+  }
+  50% {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(187, 93, 42, 0.7);
+  }
+}
 
-    .footer-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 40px;
-        align-items: start;
-    }
+/* Respeita quem prefere menos animação */
+@media (prefers-reduced-motion: reduce) {
+  .prato-add {
+    animation: none;
+  }
+  .prato-card-clicavel {
+    transition: none;
+  }
+}
 
-    .footer-info h3 {
-        color: #bb5d2a;
-        font-size: 22px;
-        margin-bottom: 12px;
-        border-bottom: 2px solid #bb5d2a;
-        display: inline-block;
-        padding-bottom: 4px;
-    }
+/* ---------- Cuia ---------- */
+.cuia {
+  display: flex;
+  justify-content: center;
+  height: 400px;
+}
 
-    .footer-info p {
+.cuia img {
+  max-height: 100%;
+  width: auto;
+}
 
-        font-size: 16px;
-        line-height: 1.6;
-        color: oklch(88% 0.011 106.6);
-    }
+/* ---------- Footer ---------- */
+footer {
+  background-color: oklch(12% 0.006 107.1);
+  padding: 50px 20px 20px;
+  margin-top: 60px;
+  border-top: 1px solid oklch(30% 0.01 107.1);
+}
 
-    .footer-map iframe {
-        width: 100%;
-        height: 250px;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    }
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  align-items: start;
+}
 
-    .footer-copy {
-        text-align: center;
-        margin-top: 40px;
-        padding-top: 20px;
-        border-top: 1px solid oklch(20% 0.006 107.1);
-        font-size: 14px;
-        color: oklch(65% 0.011 106.6);
-    }
+.footer-info h3 {
+  color: #bb5d2a;
+  font-size: 22px;
+  margin-bottom: 12px;
+  border-bottom: 2px solid #bb5d2a;
+  display: inline-block;
+  padding-bottom: 4px;
+}
 
-    .cuia{
-        display: flex;
-        justify-content: center;
-        height: 400px;
-        
-    }
+.footer-info p {
+  font-size: 16px;
+  line-height: 1.6;
+  color: oklch(88% 0.011 106.6);
+}
 
-    .btn-zap{
+.footer-map iframe {
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
 
-            display: inline-flex;
-            width: 100%;
-            position: relative;
-            right: 10px;
-    }
+.footer-copy {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid oklch(20% 0.006 107.1);
+  font-size: 14px;
+  color: oklch(65% 0.011 106.6);
+}
 
-    .whatsapp-btn {
-        display: inline-flex;
+.btn-zap {
+  display: inline-flex;
+}
 
-        background-color:#128c2c; /* Verde do WhatsApp */
-        color: #ffffff;            /* Cor do texto */
-        font-family: Arial, sans-serif;
-        font-size: 16px;
-        font-weight: bold;
-        padding: 12px 24px;
-        border-radius: 50px;       /* Deixa o botão arredondado */
-        text-decoration: none;     /* Remove o sublinhado do link */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-        transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-    }
-    .whatsapp-btn:hover {
-        background-color: #25d365af; /* Verde ligeiramente mais escuro */
-        transform: translateY(-2px); /* Eleva o botão suavemente */
-        box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-    }
-    .whatsapp-btn:active {
-        transform: translateY(0);
-    }
+.whatsapp-btn {
+  display: inline-flex;
+  background-color: #128c2c;
+  color: #ffffff;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
 
+.whatsapp-btn:hover:not(:disabled) {
+  background-color: #25d365af;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.whatsapp-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.whatsapp-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ============================================================
+   COMANDA (botão flutuante + modal + toast)
+   ============================================================ */
+
+/* Botão flutuante */
+.comanda-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 900;
+  background: #bb5d2a;
+  color: #0c0c09;
+  border: none;
+  border-radius: 50px;
+  padding: 14px 22px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.comanda-btn:hover,
+.comanda-btn:focus-visible {
+  transform: translateY(-3px);
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.comanda-btn-ativa {
+  background: #e07b3f;
+  animation: pulsoComanda 1.6s ease-in-out infinite;
+}
+
+@keyframes pulsoComanda {
+  0%, 100% { box-shadow: 0 6px 20px rgba(187, 93, 42, 0.5); }
+  50% { box-shadow: 0 6px 28px rgba(187, 93, 42, 0.9); }
+}
+
+/* Modal */
+.comanda-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.comanda-modal-aberto {
+  opacity: 1;
+  visibility: visible;
+}
+
+.comanda-modal-conteudo {
+  background: #14130f;
+  color: oklch(88% 0.011 106.6);
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 16px 16px 0 0;
+  padding: 20px;
+  transform: translateY(100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.comanda-modal-aberto .comanda-modal-conteudo {
+  transform: translateY(0);
+}
+
+@media (min-width: 640px) {
+  .comanda-modal {
+    align-items: center;
+  }
+  .comanda-modal-conteudo {
+    border-radius: 16px;
+    transform: scale(0.95);
+  }
+  .comanda-modal-aberto .comanda-modal-conteudo {
+    transform: scale(1);
+  }
+}
+
+.comanda-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comanda-modal-header h2 {
+  font-size: 26px;
+  color: #bb5d2a;
+}
+
+.comanda-fechar {
+  background: transparent;
+  border: none;
+  color: #bb5d2a;
+  font-size: 32px;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0 8px;
+}
+
+/* Campos do cliente */
+.comanda-cliente {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.comanda-cliente label {
+  display: flex;
+  flex-direction: column;
+  font-size: 13px;
+  color: oklch(70% 0.011 106.6);
+  gap: 4px;
+}
+
+.comanda-cliente input {
+  background: #1f1d17;
+  border: 1px solid #3a352a;
+  color: #f0ece0;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 15px;
+}
+
+.comanda-cliente input:focus {
+  outline: 2px solid #bb5d2a;
+  border-color: transparent;
+}
+
+/* Lista de itens */
+.comanda-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.comanda-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  background: #1f1d17;
+  border-radius: 8px;
+}
+
+.comanda-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.comanda-item-info strong {
+  color: #f0ece0;
+  font-size: 15px;
+  overflow-wrap: break-word;
+}
+
+.comanda-item-info span {
+  font-size: 13px;
+  color: oklch(70% 0.011 106.6);
+}
+
+.comanda-item-acoes {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.comanda-item-acoes button {
+  background: #2c2920;
+  border: 1px solid #3a352a;
+  color: #f0ece0;
+  width: 30px;
+  height: 30px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 1;
+  transition: background 0.15s ease;
+}
+
+.comanda-item-acoes button:hover {
+  background: #bb5d2a;
+  color: #0c0c09;
+}
+
+.comanda-qtd {
+  min-width: 22px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.comanda-vazio {
+  text-align: center;
+  color: oklch(60% 0.011 106.6);
+  font-size: 15px;
+  padding: 20px 0;
+}
+
+/* Rodapé do modal */
+.comanda-rodape {
+  border-top: 1px solid #3a352a;
+  padding-top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.comanda-total-linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+}
+
+.comanda-total-linha strong {
+  color: #bb5d2a;
+  font-size: 24px;
+}
+
+.comanda-botoes {
+  display: flex;
+  gap: 10px;
+}
+
+.comanda-botoes .whatsapp-btn {
+  flex: 1;
+  justify-content: center;
+}
+
+.btn-secundario {
+  background: #2c2920;
+  color: #f0ece0;
+  border: 1px solid #3a352a;
+  border-radius: 50px;
+  padding: 12px 20px;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-secundario:hover {
+  background: #3a352a;
+}
+
+/* ---------- Toast ---------- */
+.toast {
+  position: fixed;
+  bottom: 90px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #1f1d17;
+  color: #f0ece0;
+  border: 1px solid #bb5d2a;
+  padding: 12px 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
+  z-index: 1100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  max-width: calc(100vw - 40px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.toast-visivel {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}
+
+.toast-desfazer {
+  background: transparent;
+  border: 1px solid #bb5d2a;
+  color: #bb5d2a;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.toast-desfazer:hover {
+  background: #bb5d2a;
+  color: #0c0c09;
+}
+
+/* ---------- Mobile ---------- */
 @media (max-width: 768px) {
-    .btn-zap{
-        justify-content: center;
-        position: relative;
-        left: 10px;
-    }
-    .cuia{
-        height: 150px;
-    }
+  .cuia {
+    height: 150px;
+  }
 
-    .logo {
-        width: 20px; /* Ajusta o tamanho da logo para telas menores */
-    }
+  .container-nav h1 {
+    white-space: normal;
+    text-align: center;
+    font-size: 40px;
+  }
 
-    .container-nav h1 {
-        /* Permite que o texto quebre linha se o celular for muito pequeno */
-        white-space: normal; 
-        text-align: center;
-        
-        /* Ajuste fino do clamp para garantir que não ultrapasse a tela */
-        font-size: 40px; 
+  .container-nav h3 {
+    text-align: center;
+    font-size: 22px;
+  }
 
-    }
+  .container-main h2 {
+    text-align: left;
+    font-size: 30px;
+  }
 
-    .container-nav h3{
-         
-        text-align: center;
-        
-        /* Ajuste fino do clamp para garantir que não ultrapasse a tela */
-        font-size: 22px; 
-    }
+  .container-main p {
+    text-align: left;
+  }
 
-    .container-main{
-        h2{
-            text-align: left;
-            font-size: 30px;
-        }
-        p{
-            
+  .container-main-flex {
+    flex-direction: column;
+  }
 
-            text-align: left;
+  .container-main-flex h2 {
+    text-align: left;
+    font-size: 30px;
+    white-space: nowrap;
+  }
 
-        }
-    }
-    .container-main-flex {
-        flex-direction: column;
-        h2{
-            text-align: left;
-            font-size: 30px;
-            white-space: nowrap; 
-        }
-        p{
-            font-size: 25px;   
-            text-align: left;
-            
-        }
-    }
+  .container-main-flex p {
+    font-size: 25px;
+    text-align: left;
+  }
 
+  .bio-img {
+    width: 100%;
+    height: 300px;
+  }
 
-    .bio-img {
-        width: 100%;
-        height: 300px;
-    }
+  .bio-img:nth-child(2) {
+    display: none;
+  }
 
-    .categoria-titulo {
-        font-size: 28px;
-    }
+  .categoria-titulo {
+    font-size: 28px;
+  }
 
-    .bio-img:nth-child(2) {
-        display: none;
-    }
+  .menu-grid {
+    padding: 0 14px;
+  }
 
-    .drink-card{
-        margin: 0;
-        padding: 5px;
-        width: 80%;
-        height: 100%;
-    }
+  .prato-card p {
+    font-size: 17px;
+    line-height: 1.3;
+  }
 
+  .prato-card-clicavel {
+    padding-right: 50px;
+  }
 
-    .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
-    }
+  .prato-add {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    top: 12px;
+    right: 12px;
+  }
 
-    .footer-info h3 {
-        border-bottom: none;
-    }
+  .aviso-comanda {
+    font-size: 14px;
+  }
 
-    
-    }
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-info h3 {
+    border-bottom: none;
+  }
+
+  .comanda-cliente {
+    grid-template-columns: 1fr;
+  }
+}
