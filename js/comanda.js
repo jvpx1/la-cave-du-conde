@@ -90,7 +90,7 @@ function atualizarComanda() {
   // Botão flutuante
   const btn = document.getElementById("comanda-btn");
   if (btn) {
-    btn.textContent = quantidade > 0 ? `🛒 Comanda (${quantidade})` : "🛒 Comanda";
+    btn.textContent = quantidade > 0 ? `🛒 Reserva (${quantidade})` : "🛒 Reserva";
     btn.classList.toggle("comanda-btn-ativa", quantidade > 0);
   }
 
