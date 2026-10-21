@@ -3,7 +3,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap');
 
 * {
   padding: 0;
@@ -18,39 +17,66 @@ html {
 body {
   background-color: #0c0c09;
   font-family: "Poppins", sans-serif;
+  color: oklch(88% 0.011 106.6);
 }
 
 h2 {
   color: #bb5d2a;
-  font-size: 40px;
+  font-size: 32px;
 }
 
 h3 {
   color: #bb5d2a;
-  font-size: 30px;
+  font-size: 24px;
 }
 
 p {
-  font-size: 20px;
+  font-size: 18px;
+  line-height: 1.6;
 }
 
 /* ---------- Animações ---------- */
-@keyframes revealOnScroll {
-  from {
-    opacity: 0;
-    transform: translateY(60px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+
+/* Entrada: sobe e aparece */
+@keyframes revealIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* reveal que NÃO some no final do scroll */
+/* Saída: sobe e some */
+@keyframes revealOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-40px); }
+}
+
+/* Animação para o texto inicial (acontece logo que o site carrega) */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.reveal-inicial {
+  animation: fadeIn 1.5s ease-in forwards;
+}
+
+/* ------------------------------------------
+   A MÁGICA ACONTECE AQUI
+   ------------------------------------------ */
 .reveal {
-  animation: revealOnScroll linear both;
+  /* Aplicamos duas animações: uma de entrada e uma de saída */
+  animation: revealIn linear both, revealOut linear forwards;
   animation-timeline: view();
-  animation-range: entry 0% cover 30%;
+  
+  /* 
+    1ª animação (revealIn): 
+    - entry 35% -> começa a aparecer quando o elemento entra na tela
+    - cover 45% -> termina de aparecer quando chega no meio da tela
+    
+    2ª animação (revealOut):
+    - exit 50% -> começa a sumir quando o elemento começa a sair da tela pelo topo
+    - exit 0% -> termina de sumir quando ele sai completamente
+  */
+  animation-range: entry 45% cover 45%, exit 0% exit 50%;
 }
 
 /* ---------- Nav ---------- */
@@ -59,22 +85,23 @@ nav {
   text-align: center;
   background: oklch(15.3% 0.006 107.1);
   margin-top: 1em;
+  padding: 10px 0;
 }
 
 nav a {
   color: #bb5d2a;
   text-decoration: none;
-  margin-right: 10px;
-  overflow: hidden;
+  margin: 0 10px;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
-nav a:hover,
-nav a:focus-visible {
-  text-decoration: underline;
+nav a:hover {
+  color: #e07b3f;
 }
 
 .color-default {
-  color: oklch(88% 0.011 106.6);
+  color: oklch(80% 0.011 106.6);
 }
 
 .center {
@@ -105,10 +132,8 @@ nav a:focus-visible {
   margin: 0;
 }
 
-.container-nav h2 {
-  text-align: center;
-  font-family: "Lucida Handwriting", "Brush Script MT", "Apple Chancery", cursive;
-  font-size: 30px;
+.container-nav h3 {
+  font-size: 22px;
 }
 
 /* ---------- Quem somos ---------- */
@@ -125,156 +150,138 @@ nav a:focus-visible {
 /* ---------- Chef ---------- */
 .container-main-flex {
   display: flex;
-  padding: 70px 20px;
-  gap: 10px;
-  max-width: 1200px;
+  padding: 50px 20px;
+  gap: 20px;
+  max-width: 1000px;
   margin: 10px auto 0;
+  align-items: center;
 }
 
 .bio-img {
   width: 30%;
-  height: 350px;
+  height: 22rem;
   object-fit: cover;
   border-radius: 8px;
+  border: 1px solid red;
 }
 
-/* ---------- Aviso discreto abaixo da bio do Chef ---------- */
-.aviso-comanda {
+.container-main-flex p {
+  text-align: justify;
+}
+
+/* ---------- Aviso de Reserva ---------- */
+.aviso-cardapio {
   max-width: 800px;
-  margin: 0 auto 20px;
-  padding: 0 20px;
+  margin: 40px auto;
   text-align: center;
-  font-size: 15px;
-  font-style: italic;
-  color: oklch(70% 0.011 106.6);
-  line-height: 1.6;
+  background-color: oklch(46.634% 0.02488 107.368 / 0.1);
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid oklch(46.634% 0.02488 107.368 / 0.3);
 }
 
-.aviso-comanda .aviso-destaque {
+.aviso-cardapio p {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.aviso-cardapio .aviso-destaque {
   color: #bb5d2a;
-  font-style: normal;
   font-weight: 600;
+  margin-bottom: 0;
 }
 
-/* ---------- Cardápio ---------- */
+/* ---------- Cardápio e Acordeão ---------- */
 .cardapio-section {
-  text-align: left;
-  padding: 10px auto;
-}
-
-.categoria-titulo {
-  color: #bb5d2a;
-  font-size: 36px;
-  margin: 40px 0 20px 0;
-  text-align: center;
-}
-
-.menu-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
   padding: 0 20px;
 }
 
-/* ---------- Card do prato (base) ---------- */
-.prato-card {
-  position: relative;
+.section-title {
+  margin-bottom: 30px;
+}
+
+.acordeao-item {
+  margin-bottom: 15px;
+  border: 1px solid oklch(30% 0.01 107.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.acordeao-header {
+  width: 100%;
+  background-color: oklch(15% 0.006 107.1);
+  border: none;
   padding: 20px;
-  border-radius: 10px;
-  background-color: oklch(46.634% 0.02488 107.368 / 0.082);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-family: inherit;
+}
+
+.acordeao-header:hover {
+  background-color: oklch(20% 0.006 107.1);
+}
+
+.categoria-titulo {
+  margin: 0;
+  font-size: 22px;
+  color: #bb5d2a;
+}
+
+.icone-seta {
+  font-size: 20px;
+  color: #bb5d2a;
+  transition: transform 0.3s ease;
+}
+
+.acordeao-header[aria-expanded="true"] .icone-seta {
+  transform: rotate(180deg);
+}
+
+.acordeao-conteudo {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  background-color: #0c0c09;
+}
+
+/* Lista de pratos dentro do acordeão */
+.menu-grid {
   display: flex;
   flex-direction: column;
-  justify-content: baseline;
-  border: 1px solid transparent;
-  color: inherit;
-  font: inherit;
-  text-align: left;
+  padding: 10px 0;
+}
+
+.prato-card {
+  padding: 15px 20px;
+  border-bottom: 1px solid oklch(20% 0.006 107.1);
+}
+
+.prato-card:last-child {
+  border-bottom: none;
 }
 
 .prato-card h3 {
-  color: #bb5d2a;
-  font-size: 20px;
-  margin-bottom: 5px;
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: #e07b3f; /* Cor mais clara para leitura */
 }
 
 .prato-card p {
-  font-size: 20px;
-  line-height: 1;
-  overflow-wrap: break-word;
-  text-align: left;
-}
-
-/* ---------- Card NÃO clicável (Drinks / Variedades) ---------- */
-.prato-card-informativo {
-  cursor: default;
-  opacity: 0.85;
-}
-
-/* ---------- Card clicável (Entradas / Principais / Sobremesas) ---------- */
-.prato-card-clicavel {
-  cursor: pointer;
-  padding-right: 56px; /* abre espaço pro "+" flutuante */
-  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-}
-
-.prato-card-clicavel:hover,
-.prato-card-clicavel:focus-visible {
-  transform: translateY(-3px);
-  background-color: oklch(46.634% 0.02488 107.368 / 0.16);
-  border-color: #bb5d2a;
-  outline: none;
-}
-
-/* "+" sempre visível e flutuando */
-.prato-add {
-  position: absolute;
-  top: 14px;
-  right: 14px;
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: #bb5d2a;
-  color: #0c0c09;
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 1;
-  box-shadow: 0 4px 12px rgba(187, 93, 42, 0.45);
-  animation: flutuarAdd 2.2s ease-in-out infinite;
-  pointer-events: none; /* o clique é do card inteiro */
-}
-
-
-
-@keyframes flutuarAdd {
-  0%, 100% {
-    transform: translateY(0);
-    box-shadow: 0 4px 12px rgba(187, 93, 42, 0.45);
-  }
-  50% {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 18px rgba(187, 93, 42, 0.7);
-  }
-}
-
-/* Respeita quem prefere menos animação */
-@media (prefers-reduced-motion: reduce) {
-  .prato-add {
-    animation: none;
-  }
-  .prato-card-clicavel {
-    transition: none;
-  }
+  font-size: 15px;
+  line-height: 1.4;
 }
 
 /* ---------- Cuia ---------- */
 .cuia {
   display: flex;
   justify-content: center;
-  height: 400px;
+  height: 300px;
+  margin-top: 40px;
 }
 
 .cuia img {
@@ -286,12 +293,11 @@ nav a:focus-visible {
 footer {
   background-color: oklch(12% 0.006 107.1);
   padding: 50px 20px 20px;
-  margin-top: 60px;
   border-top: 1px solid oklch(30% 0.01 107.1);
 }
 
 .footer-container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -301,24 +307,23 @@ footer {
 
 .footer-info h3 {
   color: #bb5d2a;
-  font-size: 22px;
+  font-size: 20px;
   margin-bottom: 12px;
-  border-bottom: 2px solid #bb5d2a;
-  display: block;
+  border-bottom: 1px solid #bb5d2a;
+  display: inline-block;
   padding-bottom: 4px;
 }
 
 .footer-info p {
-  font-size: 16px;
-  line-height: 1.6;
-  color: oklch(88% 0.011 106.6);
+  font-size: 15px;
+  color: oklch(80% 0.011 106.6);
 }
 
 .footer-map iframe {
   width: 100%;
-  height: 250px;
-  border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  height: 200px;
+  border-radius: 8px;
+  filter: grayscale(100%) invert(90%) hue-rotate(180deg); /* Deixa o mapa escuro para combinar */
 }
 
 .footer-copy {
@@ -326,435 +331,57 @@ footer {
   margin-top: 40px;
   padding-top: 20px;
   border-top: 1px solid oklch(20% 0.006 107.1);
-  font-size: 14px;
-  color: oklch(65% 0.011 106.6);
-}
-& a{
-  text-decoration: none;
-  color: oklch(65% 0.011 106.6);
-}
-
-.btn-zap {
-  display: inline-flex;
+  font-size: 13px;
+  color: oklch(60% 0.011 106.6);
 }
 
 .whatsapp-btn {
   display: inline-flex;
   background-color: #128c2c;
   color: #ffffff;
-  font-family: Arial, sans-serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: bold;
-  padding: 12px 24px;
+  padding: 10px 20px;
   border-radius: 50px;
   text-decoration: none;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
-  border: none;
-  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 10px 0;
 }
 
-.whatsapp-btn:hover:not(:disabled) {
+.whatsapp-btn:hover {
   background-color: #25d365af;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
-}
-
-.whatsapp-btn:active:not(:disabled) {
-  transform: translateY(0);
-}
-
-.whatsapp-btn:disabled {
-  opacity: 0.4;
-  cursor: not-allowed;
-}
-
-/* ============================================================
-   COMANDA (botão flutuante + modal + toast)
-   ============================================================ */
-
-/* Botão flutuante */
-.comanda-btn {
-  position: fixed;
-  bottom: 24px;
-  right: 24px;
-  z-index: 900;
-  background: #bb5d2a;
-  color: #0c0c09;
-  border: none;
-  border-radius: 50px;
-  padding: 14px 22px;
-  font-family: "Poppins", sans-serif;
-  font-weight: 700;
-  font-size: 16px;
-  cursor: pointer;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-
-.comanda-btn:hover,
-.comanda-btn:focus-visible {
-  transform: translateY(-3px);
-  outline: 2px solid #fff;
-  outline-offset: 2px;
-}
-
-.comanda-btn-ativa {
-  background: #e07b3f;
-  animation: pulsoComanda 1.6s ease-in-out infinite;
-}
-
-@keyframes pulsoComanda {
-  0%, 100% { box-shadow: 0 6px 20px rgba(187, 93, 42, 0.5); }
-  50% { box-shadow: 0 6px 28px rgba(187, 93, 42, 0.9); }
-}
-
-/* Modal */
-.comanda-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 1000;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease, visibility 0.25s ease;
-}
-
-.comanda-modal-aberto {
-  opacity: 1;
-  visibility: visible;
-}
-
-.comanda-modal-conteudo {
-  background: #14130f;
-  color: oklch(88% 0.011 106.6);
-  width: 100%;
-  max-width: 520px;
-  max-height: 90vh;
-  overflow-y: auto;
-  border-radius: 16px 16px 0 0;
-  padding: 20px;
-  transform: translateY(100%);
-  transition: transform 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.comanda-modal-aberto .comanda-modal-conteudo {
-  transform: translateY(0);
-}
-
-@media (min-width: 640px) {
-  .comanda-modal {
-    align-items: center;
-  }
-  .comanda-modal-conteudo {
-    border-radius: 16px;
-    transform: scale(0.95);
-  }
-  .comanda-modal-aberto .comanda-modal-conteudo {
-    transform: scale(1);
-  }
-}
-
-.comanda-modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.comanda-modal-header h2 {
-  font-size: 26px;
-  color: #bb5d2a;
-}
-
-.comanda-fechar {
-  background: transparent;
-  border: none;
-  color: #bb5d2a;
-  font-size: 32px;
-  line-height: 1;
-  cursor: pointer;
-  padding: 0 8px;
-}
-
-/* Campos do cliente */
-.comanda-cliente {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.comanda-cliente label {
-  display: flex;
-  flex-direction: column;
-  font-size: 13px;
-  color: oklch(70% 0.011 106.6);
-  gap: 4px;
-}
-
-.comanda-cliente input {
-  background: #1f1d17;
-  border: 1px solid #3a352a;
-  color: #f0ece0;
-  padding: 8px 10px;
-  border-radius: 6px;
-  font-family: inherit;
-  font-size: 15px;
-}
-
-.comanda-cliente input:focus {
-  outline: 2px solid #bb5d2a;
-  border-color: transparent;
-}
-
-/* Lista de itens */
-.comanda-lista {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.comanda-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  padding: 10px 12px;
-  background: #1f1d17;
-  border-radius: 8px;
-}
-
-.comanda-item-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-
-.comanda-item-info strong {
-  color: #f0ece0;
-  font-size: 15px;
-  overflow-wrap: break-word;
-}
-
-.comanda-item-info span {
-  font-size: 13px;
-  color: oklch(70% 0.011 106.6);
-}
-
-.comanda-item-acoes {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  flex-shrink: 0;
-}
-
-.comanda-item-acoes button {
-  background: #2c2920;
-  border: 1px solid #3a352a;
-  color: #f0ece0;
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 1;
-  transition: background 0.15s ease;
-}
-
-.comanda-item-acoes button:hover {
-  background: #bb5d2a;
-  color: #0c0c09;
-}
-
-.comanda-qtd {
-  min-width: 22px;
-  text-align: center;
-  font-weight: 600;
-}
-
-.comanda-vazio {
-  text-align: center;
-  color: oklch(60% 0.011 106.6);
-  font-size: 15px;
-  padding: 20px 0;
-}
-
-/* Rodapé do modal */
-.comanda-rodape {
-  border-top: 1px solid #3a352a;
-  padding-top: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.comanda-total-linha {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-size: 18px;
-}
-
-.comanda-total-linha strong {
-  color: #bb5d2a;
-  font-size: 24px;
-}
-
-.comanda-botoes {
-  display: flex;
-  gap: 10px;
-}
-
-.comanda-botoes .whatsapp-btn {
-  flex: 1;
-  justify-content: center;
-}
-
-.btn-secundario {
-  background: #2c2920;
-  color: #f0ece0;
-  border: 1px solid #3a352a;
-  border-radius: 50px;
-  padding: 12px 20px;
-  font-family: "Poppins", sans-serif;
-  font-size: 15px;
-  cursor: pointer;
-  transition: background 0.2s ease;
-}
-
-.btn-secundario:hover {
-  background: #3a352a;
-}
-
-/* ---------- Toast ---------- */
-.toast {
-  position: fixed;
-  bottom: 90px;
-  left: 50%;
-  transform: translateX(-50%) translateY(20px);
-  background: #1f1d17;
-  color: #f0ece0;
-  border: 1px solid #bb5d2a;
-  padding: 12px 16px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
-  z-index: 1100;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
-  max-width: calc(100vw - 40px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-}
-
-.toast-visivel {
-  opacity: 1;
-  visibility: visible;
-  transform: translateX(-50%) translateY(0);
-}
-
-.toast-desfazer {
-  background: transparent;
-  border: 1px solid #bb5d2a;
-  color: #bb5d2a;
-  border-radius: 6px;
-  padding: 4px 10px;
-  font-size: 13px;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.toast-desfazer:hover {
-  background: #bb5d2a;
-  color: #0c0c09;
 }
 
 /* ---------- Mobile ---------- */
 @media (max-width: 768px) {
-  .cuia {
-    height: 150px;
-  }
-
   .container-nav h1 {
     white-space: normal;
     text-align: center;
-    font-size: 40px;
-  }
-
-  .container-nav h3 {
-    text-align: center;
-    font-size: 22px;
-  }
-
-  .container-main h2 {
-    text-align: left;
-    font-size: 30px;
-  }
-
-  .container-main p {
-    text-align: left;
+    font-size: 38px;
   }
 
   .container-main-flex {
     flex-direction: column;
-  }
-
-  .container-main-flex h2 {
-    text-align: left;
-    font-size: 30px;
-    white-space: nowrap;
-  }
-
-  .container-main-flex p {
-    font-size: 25px;
-    text-align: left;
+    padding: 30px 20px;
   }
 
   .bio-img {
     width: 100%;
-    height: 300px;
+    height: 250px;
   }
 
   .bio-img:nth-child(2) {
     display: none;
   }
 
-  .categoria-titulo {
-    font-size: 28px;
+  .container-main p, 
+  .container-main-flex p {
+    text-align: left;
+    font-size: 16px; /* Mais confortável no celular */
   }
 
-  .menu-grid {
-    padding: 0 14px;
-  }
-
-  .prato-card p {
-    font-size: 17px;
-    line-height: 1.3;
-  }
-
-  .prato-card-clicavel {
-    padding-right: 50px;
-  }
-
-  .prato-add {
-    width: 30px;
-    height: 30px;
-    font-size: 18px;
-    top: 12px;
-    right: 12px;
-  }
-
-  .aviso-comanda {
-    font-size: 14px;
+  .cuia {
+    height: 150px;
   }
 
   .footer-container {
@@ -764,9 +391,5 @@ footer {
 
   .footer-info h3 {
     border-bottom: none;
-  }
-
-  .comanda-cliente {
-    grid-template-columns: 1fr;
   }
 }

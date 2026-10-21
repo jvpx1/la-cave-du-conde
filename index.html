@@ -3,13 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>La Cave Du Conde — Cozinha Amazônica Contemporânea</title>
-  <meta name="description" content="Refúgio de alta gastronomia e sabores autênticos no coração de São Gabriel da Cachoeira. Cozinha Amazônica Contemporânea desde 1992." />
+  
+  <!-- SEO Otimizado -->
+  <title>La Cave du Conde | Cozinha Amazônica em São Gabriel da Cachoeira</title>
+  <meta name="description" content="Descubra o refúgio de alta gastronomia em São Gabriel da Cachoeira. Cozinha amazônica contemporânea, ambiente intimista e pratos únicos. Reserve pelo WhatsApp." />
   <meta name="theme-color" content="#0c0c09" />
 
-  <!-- Open Graph (link bonito no WhatsApp) -->
-  <meta property="og:title" content="La Cave Du Conde" />
-  <meta property="og:description" content="Cozinha Amazônica Contemporânea desde 1992 — São Gabriel da Cachoeira, AM" />
+  <!-- Open Graph -->
+  <meta property="og:title" content="La Cave du Conde — Cozinha Amazônica em SGC" />
+  <meta property="og:description" content="Um refúgio de alta gastronomia no coração de São Gabriel da Cachoeira. Reserve pelo WhatsApp." />
   <meta property="og:type" content="restaurant" />
   <meta property="og:image" content="images/brasao_invi.png" />
 
@@ -34,7 +36,7 @@
 
   <main>
     <section>
-      <div class="container-main reveal">
+      <div class="container-main reveal-inicial">
         <h2 class="center">Quem somos nós?</h2>
         <p class="color-default center">
           Um refúgio de alta gastronomia e sabores autênticos oculto no coração de
@@ -59,16 +61,16 @@
           </p>
         </div>
       </div>
-
-      <p class="aviso-comanda reveal">
-        Monte sua reserva clicando nos pratos, nas entradas e nas sobremesas —
-        depois é só
-        <span class="aviso-destaque">enviar direto pelo WhatsApp</span>
-        com nome, data e horário.
-      </p>
     </section>
 
     <section id="menu">
+      
+      <!-- Convite para o Cardápio -->
+      <div class="aviso-cardapio reveal">
+        <p>Explore nosso cardápio tocando nas categorias abaixo.</p>
+        <p class="aviso-destaque">Para reservar sua mesa, fale conosco pelo WhatsApp no final da página.</p>
+      </div>
+
       <div class="cardapio-section">
         <h2 class="section-title center">Cardápio</h2>
         <!-- Cardápio renderizado por js/cardapio.js -->
@@ -80,56 +82,6 @@
       </div>
     </section>
   </main>
-
-  <!-- Botão flutuante da comanda -->
-  <button type="button" id="comanda-btn" class="comanda-btn" aria-haspopup="dialog">
-    🛒 Reserva
-  </button>
-
-  <!-- Modal da comanda -->
-  <div id="comanda-modal" class="comanda-modal" aria-hidden="true" role="dialog" aria-labelledby="comanda-titulo">
-    <div class="comanda-modal-conteudo">
-      <header class="comanda-modal-header">
-        <h2 id="comanda-titulo">Sua Comanda</h2>
-        <button type="button" id="comanda-fechar" class="comanda-fechar" aria-label="Fechar">×</button>
-      </header>
-
-      <div class="comanda-cliente">
-        <label>
-          Nome
-          <input type="text" id="cliente-nome" placeholder="Seu nome" required />
-        </label>
-        <label>
-          Pessoas
-          <input type="number" id="cliente-pessoas" min="1" max="20" value="2" required />
-        </label>
-        <label>
-          Data
-          <input type="date" id="cliente-data" required />
-        </label>
-        <label>
-          Horário
-          <input type="time" id="cliente-hora" min="19:00" max="22:30" value="20:00" required />
-        </label>
-      </div>
-
-      <ul id="comanda-lista" class="comanda-lista"></ul>
-      <p id="comanda-vazio" class="comanda-vazio">Sua comanda está vazia. Clique em um prato para adicionar.</p>
-
-      <div class="comanda-rodape">
-        <div class="comanda-total-linha">
-          <span>Total</span>
-          <strong id="comanda-total">R$ 0,00</strong>
-        </div>
-        <div class="comanda-botoes">
-          <button type="button" id="comanda-limpar" class="btn-secundario">Limpar</button>
-          <button type="button" id="comanda-enviar" class="whatsapp-btn" disabled>
-            Enviar pelo WhatsApp
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
 
   <footer class="reveal">
     <section id="info">
@@ -164,16 +116,15 @@
       </div>
       <div class="footer-copy">
         <p>&copy; La Cave du Conde — Todos os direitos reservados.</p>
-        <p><a href="https://www.instagram.com/joaovitorpwnz/">Desenvolvido por João Vitor Ribeiro</a></p>
+        <p>Desenvolvido por João Vitor Ribeiro</p>
       </div>
     </section>
   </footer>
 
+  <!-- Apenas o script do cardápio -->
   <script type="module">
     import { renderizarCardapio } from "./js/cardapio.js";
-    import { inicializarComanda } from "./js/comanda.js";
     renderizarCardapio();
-    inicializarComanda();
   </script>
 </body>
 </html>
