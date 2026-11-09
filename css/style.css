@@ -1,8 +1,12 @@
 @charset "UTF-8";
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&display=swap');
+/* Base → animações → navegação → seções → cardápio → rodapé → responsividade */
+:root {
+  --cor-fundo: #0c0c09;
+  --cor-destaque: #bb5d2a;
+  --cor-destaque-clara: #e07b3f;
+  --cor-texto: oklch(80% 0.011 106.6);
+}
 
 * {
   padding: 0;
@@ -15,18 +19,18 @@ html {
 }
 
 body {
-  background-color: #0c0c09;
+  background-color: var(--cor-fundo);
   font-family: "Poppins", sans-serif;
   color: oklch(88% 0.011 106.6);
 }
 
 h2 {
-  color: #bb5d2a;
+  color: var(--cor-destaque);
   font-size: 32px;
 }
 
 h3 {
-  color: #bb5d2a;
+  color: var(--cor-destaque);
   font-size: 24px;
 }
 
@@ -35,15 +39,34 @@ p {
   line-height: 1.6;
 }
 
+:focus-visible {
+  outline: 2px solid var(--cor-destaque-clara);
+  outline-offset: 4px;
+}
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 10;
+  padding: 12px;
+  background: var(--cor-fundo);
+  color: var(--cor-destaque-clara);
+  transform: translateY(-150%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
 /* ---------- Animações ---------- */
 
-/* Entrada: sobe e aparece */
+/* As seções aparecem ao entrar e desaparecem ao sair pelo topo. */
 @keyframes revealIn {
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Saída: sobe e some */
 @keyframes revealOut {
   from { opacity: 1; transform: translateY(0); }
   to { opacity: 0; transform: translateY(-40px); }
@@ -51,32 +74,20 @@ p {
 
 /* Animação para o texto inicial (acontece logo que o site carrega) */
 @keyframes fadeIn {
-  from { opacity: 0; }
+  from { opacity: 0.85; }
   to { opacity: 1; }
 }
 
 .reveal-inicial {
-  animation: fadeIn 1.5s ease-in forwards;
+  animation: fadeIn 0.6s ease-out forwards;
 }
 
-/* ------------------------------------------
-   A MÁGICA ACONTECE AQUI
-   ------------------------------------------ */
-.reveal {
-  /* Aplicamos duas animações: uma de entrada e uma de saída */
-  animation: revealIn linear both, revealOut linear forwards;
-  animation-timeline: view();
-  
-  /* 
-    1ª animação (revealIn): 
-    - entry 35% -> começa a aparecer quando o elemento entra na tela
-    - cover 45% -> termina de aparecer quando chega no meio da tela
-    
-    2ª animação (revealOut):
-    - exit 50% -> começa a sumir quando o elemento começa a sair da tela pelo topo
-    - exit 0% -> termina de sumir quando ele sai completamente
-  */
-  animation-range: entry 45% cover 45%, exit 0% exit 50%;
+@supports (animation-timeline: view()) {
+  .reveal {
+    animation: revealIn linear both, revealOut linear forwards;
+    animation-timeline: view();
+    animation-range: entry 45% cover 45%, exit 0% exit 50%;
+  }
 }
 
 /* ---------- Nav ---------- */
@@ -89,7 +100,7 @@ nav {
 }
 
 nav a {
-  color: #bb5d2a;
+  color: var(--cor-destaque);
   text-decoration: none;
   margin: 0 10px;
   font-weight: 500;
@@ -97,11 +108,11 @@ nav a {
 }
 
 nav a:hover {
-  color: #e07b3f;
+  color: var(--cor-destaque-clara);
 }
 
 .color-default {
-  color: oklch(80% 0.011 106.6);
+  color: var(--cor-texto);
 }
 
 .center {
@@ -125,15 +136,18 @@ nav a:hover {
 
 .container-nav h1 {
   font-weight: 100;
-  color: #bb5d2a;
+  color: var(--cor-destaque);
   font-family: "Cinzel", serif;
   font-size: clamp(32px, 5vw, 64px);
   white-space: nowrap;
   margin: 0;
 }
 
-.container-nav h3 {
+.sub-logo p {
   font-size: 22px;
+  color: var(--cor-destaque);
+  font-weight: 700;
+  line-height: normal;
 }
 
 /* ---------- Quem somos ---------- */
@@ -162,7 +176,6 @@ nav a:hover {
   height: 22rem;
   object-fit: cover;
   border-radius: 8px;
-  border: 1px solid red;
 }
 
 .container-main-flex p {
@@ -186,7 +199,7 @@ nav a:hover {
 }
 
 .aviso-cardapio .aviso-destaque {
-  color: #bb5d2a;
+  color: var(--cor-destaque);
   font-weight: 600;
   margin-bottom: 0;
 }
@@ -220,6 +233,16 @@ nav a:hover {
   cursor: pointer;
   transition: background-color 0.3s;
   font-family: inherit;
+  list-style: none;
+  gap: 16px;
+}
+
+.acordeao-header::-webkit-details-marker {
+  display: none;
+}
+
+.acordeao-header .categoria-titulo {
+  min-width: 0;
 }
 
 .acordeao-header:hover {
@@ -229,24 +252,25 @@ nav a:hover {
 .categoria-titulo {
   margin: 0;
   font-size: 22px;
-  color: #bb5d2a;
+  color: var(--cor-destaque);
 }
 
 .icone-seta {
   font-size: 20px;
-  color: #bb5d2a;
+  color: var(--cor-destaque);
   transition: transform 0.3s ease;
 }
 
-.acordeao-header[aria-expanded="true"] .icone-seta {
+.acordeao-item[open] .icone-seta {
   transform: rotate(180deg);
 }
 
+.acordeao-item[data-closing] .icone-seta {
+  transform: rotate(0deg);
+}
+
 .acordeao-conteudo {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease-out;
-  background-color: #0c0c09;
+  background-color: var(--cor-fundo);
 }
 
 /* Lista de pratos dentro do acordeão */
@@ -254,6 +278,7 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   padding: 10px 0;
+  list-style: none;
 }
 
 .prato-card {
@@ -265,10 +290,10 @@ nav a:hover {
   border-bottom: none;
 }
 
-.prato-card h3 {
+.prato-card h4 {
   font-size: 18px;
   margin-bottom: 4px;
-  color: #e07b3f; /* Cor mais clara para leitura */
+  color: var(--cor-destaque-clara); /* Cor mais clara para leitura */
 }
 
 .prato-card p {
@@ -286,6 +311,8 @@ nav a:hover {
 
 .cuia img {
   max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
   width: auto;
 }
 
@@ -306,7 +333,7 @@ footer {
 }
 
 .footer-info h3 {
-  color: #bb5d2a;
+  color: var(--cor-destaque);
   font-size: 20px;
   margin-bottom: 12px;
   border-bottom: 1px solid #bb5d2a;
@@ -316,7 +343,7 @@ footer {
 
 .footer-info p {
   font-size: 15px;
-  color: oklch(80% 0.011 106.6);
+  color: var(--cor-texto);
 }
 
 .footer-map iframe {
@@ -333,6 +360,26 @@ footer {
   border-top: 1px solid oklch(20% 0.006 107.1);
   font-size: 13px;
   color: oklch(60% 0.011 106.6);
+}
+
+.footer-copy a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-copy a:hover {
+  color: var(--cor-destaque-clara);
+  text-decoration: underline;
+}
+
+.telefone-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.telefone-link:hover {
+  color: var(--cor-destaque-clara);
 }
 
 .whatsapp-btn {
@@ -374,7 +421,7 @@ footer {
     display: none;
   }
 
-  .container-main p, 
+  .container-main p,
   .container-main-flex p {
     text-align: left;
     font-size: 16px; /* Mais confortável no celular */
@@ -392,4 +439,10 @@ footer {
   .footer-info h3 {
     border-bottom: none;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal, .reveal-inicial { animation: none; }
+  .icone-seta, nav a, .acordeao-header, .whatsapp-btn { transition: none; }
 }

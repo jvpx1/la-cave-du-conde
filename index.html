@@ -12,21 +12,52 @@
   <!-- Open Graph -->
   <meta property="og:title" content="La Cave du Conde — Cozinha Amazônica em SGC" />
   <meta property="og:description" content="Um refúgio de alta gastronomia no coração de São Gabriel da Cachoeira. Reserve pelo WhatsApp." />
-  <meta property="og:type" content="restaurant" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="La Cave du Conde" />
   <meta property="og:image" content="images/brasao_invi.png" />
 
+  <link rel="icon" href="favicon.ico?v=2" type="image/x-icon" sizes="16x16 32x32 48x48 64x64" />
+  <link rel="icon" href="images/favicon.png?v=2" type="image/png" sizes="64x64" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&amp;family=Cinzel:wght@400;500&amp;family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "La Cave du Conde",
+    "description": "Cozinha amazônica contemporânea em São Gabriel da Cachoeira, Amazonas.",
+    "servesCuisine": "Amazônica contemporânea",
+    "telephone": "+55-97-98459-2502",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Brig. Eduardo Gomes, 444, Boa Esperança",
+      "addressLocality": "São Gabriel da Cachoeira",
+      "addressRegion": "AM",
+      "addressCountry": "BR"
+    },
+    "openingHoursSpecification": [{
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Thursday", "Friday", "Saturday"],
+      "opens": "19:00",
+      "closes": "23:00"
+    }]
+  }
+  </script>
 </head>
 <body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
 
   <header>
     <div class="container-nav">
       <h1 class="logo-titulo center">La cave du Conde</h1>
       <div class="sub-logo center">
-        <h3>Desde 1992</h3>
-        <h3>Cozinha Amazônica Contemporânea</h3>
+        <p>Desde 1992</p>
+        <p>Cozinha Amazônica Contemporânea</p>
       </div>
-      <nav>
+      <nav aria-label="Navegação principal">
         <a href="#menu">Cardápio</a>
         <a href="#info">Contato</a>
         <a href="#chef_conde">Chef Conde</a>
@@ -34,7 +65,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="conteudo">
     <section>
       <div class="container-main reveal-inicial">
         <h2 class="center">Quem somos nós?</h2>
@@ -50,8 +81,8 @@
 
     <section id="chef_conde">
       <div class="container-main-flex reveal">
-        <img src="images/chef_aquino.jpg" alt="Chef Conde Aquino no restaurante" class="bio-img" />
-        <img src="images/chef_aquino2.jpg" alt="Chef Conde Aquino preparando um prato" class="bio-img" />
+        <img src="images/chef_aquino.webp" alt="Chef Conde Aquino no restaurante" class="bio-img" width="957" height="960" loading="lazy" decoding="async" />
+        <img src="images/chef_aquino2.webp" alt="Chef Conde Aquino preparando um prato" class="bio-img" width="960" height="720" loading="lazy" decoding="async" />
         <div>
           <h2 class="center">Chef Conde Aquino</h2>
           <p class="color-default">
@@ -73,12 +104,181 @@
 
       <div class="cardapio-section">
         <h2 class="section-title center">Cardápio</h2>
-        <!-- Cardápio renderizado por js/cardapio.js -->
-        <div id="cardapio-container"></div>
+        <div id="cardapio-container">
+          <!-- CARDAPIO:INICIO -->
+          <details class="acordeao-item">
+            <summary class="acordeao-header">
+              <h3 class="categoria-titulo">Entradas</h3>
+              <span class="icone-seta" aria-hidden="true">↓</span>
+            </summary>
+            <div class="acordeao-conteudo">
+              <ul class="menu-grid" aria-label="Entradas">
+                <li class="prato-card">
+                  <h4>Salada Wirá-mirí</h4>
+                  <p class="color-default">Cubiu, Palmito e camarão seco. Uma salada saborosa para saborear</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Carpaccio de Cubiu</h4>
+                  <p class="color-default">Cubiu, limão pimenta, ervas frescas e queijo de coalho. Uma combinação contemporânea feita pelo chef</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Queijo Coalho com aioli de umarí</h4>
+                  <p class="color-default">Delicioso Queijo de coalho grelhado acompanhado com um molho especial de umarí</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Vatapá de palmito e castanha</h4>
+                  <p class="color-default">Vatapá de dar água na boca, feito especialmente com iguarias regionais</p>
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="acordeao-item">
+            <summary class="acordeao-header">
+              <h3 class="categoria-titulo">Pratos Principais</h3>
+              <span class="icone-seta" aria-hidden="true">↓</span>
+            </summary>
+            <div class="acordeao-conteudo">
+              <ul class="menu-grid" aria-label="Pratos Principais">
+                <li class="prato-card">
+                  <h4>Pexe com Banana e Maracujá</h4>
+                  <p class="color-default">Peixe grelhado com molho e queijo, levado ao forno para gratinar. O mais pedido da casa</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Peixe Grelhado</h4>
+                  <p class="color-default">Peixe, molho de limão, batata e ervas.</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Moqueca Kabary</h4>
+                  <p class="color-default">Peixe, banana, cará, araçá e ervas.</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Peixe com jambu e tapioca</h4>
+                  <p class="color-default">Peixe, Arroz com jambu e tucupi amarelo</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Ralo Baniwa</h4>
+                  <p class="color-default">Peixe, purê de banana, tucupi preto e formiga saúva</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Bubury</h4>
+                  <p class="color-default">Peixe, tártara de macaxeira e creme de tucumã</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Medalhão com redução em açaí</h4>
+                  <p class="color-default">Alcatra grelhada, risoto de palmito e ervas</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Medalhão com purê de tucumã</h4>
+                  <p class="color-default">Alcatra grelhada, molho veloutê com cogumelos</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Medalhão com purê de macaxeira</h4>
+                  <p class="color-default">Alcatra grelhada, molho de beterraba e vinho tinto acompanhado de uma farofa de alho</p>
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="acordeao-item">
+            <summary class="acordeao-header">
+              <h3 class="categoria-titulo">Sobremesas</h3>
+              <span class="icone-seta" aria-hidden="true">↓</span>
+            </summary>
+            <div class="acordeao-conteudo">
+              <ul class="menu-grid" aria-label="Sobremesas">
+                <li class="prato-card">
+                  <h4>Banana Caramelizada</h4>
+                  <p class="color-default">Sorvete e calda cítrica</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Sorvete com geleia de cubiu</h4>
+                  <p class="color-default">Crispes de tapioca e puxurí</p>
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="acordeao-item">
+            <summary class="acordeao-header">
+              <h3 class="categoria-titulo">Drinks</h3>
+              <span class="icone-seta" aria-hidden="true">↓</span>
+            </summary>
+            <div class="acordeao-conteudo">
+              <ul class="menu-grid" aria-label="Drinks">
+                <li class="prato-card">
+                  <h4>Manhã <em>— sem álcool</em></h4>
+                  <p class="color-default">Manga, limão, xarope cítrico e água com gás</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Margarida</h4>
+                  <p class="color-default">Limão, licor de laranja e cachaça</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Remanso</h4>
+                  <p class="color-default">Whisky, Campari, Limão groselha e água com gás</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Por do Sol</h4>
+                  <p class="color-default">Gim, Martini Rosso, limão e tônica</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Canoa</h4>
+                  <p class="color-default">Whisky 12 anos (Tenesse), mel e laranja</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Gim-Tônica</h4>
+                  <p class="color-default">Gim, limão e tônica</p>
+                </li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="acordeao-item">
+            <summary class="acordeao-header">
+              <h3 class="categoria-titulo">Variedades</h3>
+              <span class="icone-seta" aria-hidden="true">↓</span>
+            </summary>
+            <div class="acordeao-conteudo">
+              <ul class="menu-grid" aria-label="Variedades">
+                <li class="prato-card">
+                  <h4>Caripirinha</h4>
+                </li>
+                <li class="prato-card">
+                  <h4>Caipiroska</h4>
+                </li>
+                <li class="prato-card">
+                  <h4>Corona</h4>
+                </li>
+                <li class="prato-card">
+                  <h4>Heineken</h4>
+                </li>
+                <li class="prato-card">
+                  <h4>Tônica</h4>
+                </li>
+                <li class="prato-card">
+                  <h4>Água</h4>
+                  <p class="color-default">Com e sem gás</p>
+                </li>
+                <li class="prato-card">
+                  <h4>Refrigerantes</h4>
+                </li>
+                <li class="prato-card">
+                  <h4>Suco de frutas regionais</h4>
+                </li>
+                <li class="prato-card">
+                  <h4>Vinhos</h4>
+                  <p class="color-default">Solicite a carta de vinhos</p>
+                </li>
+              </ul>
+            </div>
+          </details>
+          <!-- CARDAPIO:FIM -->
+        </div>
       </div>
 
       <div class="cuia">
-        <img src="images/cuia2.png" alt="Cuia tradicional amazônica" />
+        <img src="images/cuia2.webp" alt="Cuia tradicional amazônica" width="780" height="391" loading="lazy" decoding="async" />
       </div>
     </section>
   </main>
@@ -102,7 +302,7 @@
             <a href="https://wa.me/5597984592502" class="whatsapp-btn" target="_blank" rel="noopener noreferrer">Reservar no WhatsApp</a>
           </div>
           <p>ou</p>
-          <p>(97) 98459-2502</p>
+          <p><a class="telefone-link" href="tel:+5597984592502">(97) 98459-2502</a></p>
         </div>
         <div class="footer-map">
           <iframe
@@ -116,15 +316,11 @@
       </div>
       <div class="footer-copy">
         <p>&copy; La Cave du Conde — Todos os direitos reservados.</p>
-        <p>Desenvolvido por João Vitor Ribeiro</p>
+        <p><a href="https://www.instagram.com/joaovitorpwnz/" target="_blank" rel="noopener noreferrer">Desenvolvido por João Vitor Ribeiro</a></p>
       </div>
     </section>
   </footer>
 
-  <!-- Apenas o script do cardápio -->
-  <script type="module">
-    import { renderizarCardapio } from "./js/cardapio.js";
-    renderizarCardapio();
-  </script>
+  <script src="js/acordeao.js" defer></script>
 </body>
 </html>
