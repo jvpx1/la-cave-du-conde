@@ -24,6 +24,8 @@ Canonical, meta robots index/follow, og:url, og:image absoluto e url no JSON-LD 
 
 ## Conferências manuais na Netlify
 
+Verificação da propriedade antiga por arquivo HTML: `google4f91accb20e47b76.html` está na raiz e possui uma exceção HTTPS 200! antes do 301 geral em `_redirects`. Essa exceção serve somente o arquivo no hostname antigo, sem redirecionamento. Mantenha o arquivo e a exceção após verificar. Depois de publicar, confirme HTTP 200 e o texto exato em `https://lacaveduconde.netlify.app/google4f91accb20e47b76.html`; a raiz antiga deve continuar retornando 301 para o domínio novo.
+
 1. Confirmar em Domain management / Production domains que lacaveduconde.com.br permanece Primary Domain e www está associado ao mesmo projeto. Não duplicar os redirecionamentos automáticos já observados.
 2. Confirmar certificado HTTPS válido para apex e www e redirecionamento HTTP ativo. Não trocar NS, registros DNS ou configurações do Windows por causa de uma falha isolada de resolvedor.
 3. Confirmar que lacaveduconde.netlify.app é o endereço de produção deste mesmo projeto. As regras funcionam no repositório; não exigem um serviço externo de encaminhamento. Se esse hostname pertencer a outro projeto, as regras precisam ser publicadas no projeto que atende o hostname antigo.

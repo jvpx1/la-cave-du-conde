@@ -1,4 +1,6 @@
 # HTTP-to-HTTPS and www-to-apex redirects are already provided by Netlify.
+# Serve Google's ownership verification file directly on the legacy hostname.
+https://lacaveduconde.netlify.app/google4f91accb20e47b76.html /google4f91accb20e47b76.html 200!
 # Match the legacy hostname explicitly; force redirects even for existing files.
 https://lacaveduconde.netlify.app/* https://lacaveduconde.com.br/:splat 301!
 http://lacaveduconde.netlify.app/* https://lacaveduconde.com.br/:splat 301!
